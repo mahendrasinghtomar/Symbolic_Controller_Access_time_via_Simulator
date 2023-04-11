@@ -1,28 +1,22 @@
 cmake_minimum_required(VERSION 3.16)
 
-# DYNAMORIO_HOME=/mnt/c/Users/mahen/StorageLocal/scarab_mxu/scarab/src/build/opt/deps/dynamorio
+# DYNAMORIO_HOME=/scarab/src/build/opt/deps/dynamorio
 
 project(simulate4)
 
 # link_directories($ENV{DYNAMORIO_HOME}/tools/lib64/release)
 link_directories($ENV{DYNAMORIO_HOME}/clients/lib64/release)
 link_directories($ENV{DYNAMORIO_HOME}/ext/lib64/release)
-link_directories(/mnt/c/Users/mahen/StorageLocal/scarab_mxu/scarab/src/deps/dynamorio/ext/drsyms/libelftc/lib64)
+link_directories(/scarab/src/deps/dynamorio/ext/drsyms/libelftc/lib64)
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-# include_directories(/mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/src
-# /mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/utils)
-
 add_executable(simulate4 simulate4.cpp)
-# add_executable(simulate4 simulate4.cpp
-#   $ENV{SCOTS_HOME}/src/UniformGrid.hh
-#   $ENV{SCOTS_HOME}/src/TransitionFunction.hh)
 
-target_include_directories(simulate4 PRIVATE "/mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/src/"
-"/mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/utils/")
+target_include_directories(simulate4 PRIVATE "/SCOTSv0.2_Copy/src/"
+"/SCOTSv0.2_Copy/utils/")
 
 
 # configure_file(controller.scs controller.scs COPYONLY)
@@ -49,10 +43,6 @@ endif ()
 
 configure_DynamoRIO_static(simulate4)
 
-# include_directories(/mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/src/
-# /mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/utils/)
-# # configure_file(controller.scs controller.scs COPYONLY)
-
 use_DynamoRIO_static_client(simulate4 drmemtrace_static)
 
 if (ZLIB_FOUND)
@@ -75,5 +65,3 @@ use_DynamoRIO_static_client(simulate4 drsyms_static)
 # use_DynamoRIO_static_client(simulate4 drpttracer_static)
 use_DynamoRIO_static_client(simulate4 drstatecmp_static)
 use_DynamoRIO_static_client(simulate4 drcovlib_static)
-
-# target_include_directories(simulate4 PRIVATE "/mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/src/")

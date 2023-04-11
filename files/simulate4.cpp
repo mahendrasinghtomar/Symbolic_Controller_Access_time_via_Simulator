@@ -63,12 +63,7 @@ int main() {
   double xshift = 9.5;
   int si = 11;  // (si+1) adjacent scenes
 
-  //  if (!my_setenv("DYNAMORIO_OPTIONS",
-  //                  "-stderr_mask 0xc -rstats_to_stderr "
-  //                  "-client_lib ';;-offline -outdir /mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/examples/vehicle/build/memtrace_s3_F2_edit'"))
-  //       std::cerr << "failed to set env var!\n";
-
-  std::string setenvString = "-stderr_mask 0xc -rstats_to_stderr -client_lib ';;-offline -outdir /mnt/c/Users/mahen/StorageLocal/rough/SCOTSv0.2_Copy/examples/vehicle_mxu/build/memtrace_s3_F2_" + std::string(TRDIR) + "'";
+  std::string setenvString = "-stderr_mask 0xc -rstats_to_stderr -client_lib ';;-offline -outdir /SCOTSv0.2_Copy/examples/vehicle_mxu/build/memtrace_s3_F2_" + std::string(TRDIR) + "'";
 
   if (!my_setenv("DYNAMORIO_OPTIONS",  
                     setenvString.c_str()))
