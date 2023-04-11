@@ -1,4 +1,4 @@
-# Symbolic_Controller_Access_time_via_Simulator
+# Symbolic_Controller_Access_time_via_microarchitecture_Simulator
 Time to access symbolic control input via [Scarab](https://github.com/kofyou/scarab) (a microarchitecture simulator)
 
 
