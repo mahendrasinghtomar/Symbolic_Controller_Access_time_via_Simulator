@@ -6,16 +6,17 @@ Time to access symbolic control input via [Scarab](https://github.com/kofyou/sca
 Thanks to [Mingsheng Xu](https://kofyou.github.io) for [CMakeLists.txt](files/CMakeLists.txt) which is used to run start/stop API of DynamoRio.
 
 ## For a 3 dimensional kinematic vehicle model, symbolic controller for reachability computed using [SCOTSv0.2](https://github.com/mahendrasinghtomar/SCOTSv0.2_Copy):
-* SCOTSv0.2 saves symbolic controller, in the form of a lookup table, in a '.scs' file. To get a controller of size greater than 1 GB, multiple adjacent scenarios with randomised location of obstacles created. 
+* SCOTSv0.2 saves symbolic controller, in the form of a lookup table, in a '.scs' file. To get a controller of size greater than 1 GB, multiple adjacent scenarios with randomised location of obstacles is created. 
 * Accessing control input from a symbolic controller:
 ![Accessing control input from a symbolic controller](figs/symbolicControlAccess.jpg)
-The memory trace for the symbolic-control-input-access is obtained by:
+The memory trace for the symbolic-control-input-access is obtained by (see lines 120 - 124 in [simulate4.cpp](files/simulate4.cpp)):
 ```
       dr_app_setup();
       dr_app_start();
       std::vector<input_type> u = conVec[i].get_control<state_type,input_type>(x);
       dr_app_stop_and_cleanup();
 ```
+where `conVec[i]` is the symbolic-controller for the ith scenario.
 
 <!-- * For a selected vehicle scenario composed of 12 scenes, each with a controller of size ~95 MB -->
 * The below figure shows the arena: ![arena](figs/vehicle_12_scenes.jpg) with obstacles in color blue, the target area in red, and a trajectory in color black.
